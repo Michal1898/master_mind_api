@@ -18,6 +18,7 @@ def dummy_api():
             self.secret_code = ["0", "0" ,"0","0","0"]
             self.current_att=0
             self.attempts=[]
+            self.single_attempt={"att_no":0, "quessed_code":["0", "0" ,"0","0","0"], "black_s":0, "white_s":0}
             self.game_over = False
             self.code_hacked = False
             self.all_colors_quessed = False
@@ -44,8 +45,8 @@ def dummy_api():
             self.uuid = game_uuid
 
         def evaluate_attempt(self, att_no, inserted_code):
-            self.attempt["no"] = att_no
-            self.attempt["inserted_code"] = inserted_code
+            self.single_attempt["att_no"]  = att_no
+            self.single_attempt["guessed_code"] = inserted_code
             inserted_code = list(inserted_code)
             secret_code=self.secret_code
             print(secret_code, inserted_code)
@@ -80,9 +81,9 @@ def dummy_api():
                             digits_rest = len(inserted_code)
                             new_iteration = True
                             break
-            self.attempt["black_s"] = black
-            self.attempt["white_s"] = white
-            print (self.attempt)
+            self.single_attempt["black_s"] = black
+            self.single_attempt["white_s"] = white
+            print (self.single_attempt)
 
     game_code = str(request.args.get("uuid"))
     game_code= game_code.lower()
