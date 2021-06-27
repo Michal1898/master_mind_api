@@ -7,10 +7,10 @@ from datetime import timedelta, date
 
 app = Flask(__name__)
 
-
+games=[]
 @app.route("/")
 def dummy_api():
-    person = {}
+
 
     class GameZone:
         def __init__(self):
@@ -54,9 +54,21 @@ def dummy_api():
         my_game.random_code_generator()
         secret_code=my_game.print_random_code()
         #print(secret_code, type(secret_code))
-        return secret_code
+        games.append(my_game.uuid)
+        return my_game.uuid
     else:
-        att = att(request.args.get("att"))
+        print(games)
+        game_activated = False
+        for game_id in games :
+            print(game_id ,code)
+            if game_id == code:
+                game_activated = True
+        if game_activated:
+            return "hra nalezena"
+
+        else:
+            return "neplatny kod!"
+        #att = att(request.args.get("att"))
         #return "ahoj michale."
 
 
