@@ -14,6 +14,8 @@ def dummy_api():
 
     class GameZone:
         def __init__(self):
+            self.DIGIT_NO = 5
+            self.ATTEMPTS_NO = 10
             self.uuid = "00000000"
             self.secret_code = ["0", "0" ,"0","0","0"]
             self.current_att=0
@@ -109,7 +111,7 @@ def dummy_api():
         if game_activated:
             att = int(request.args.get("att"))
             inserted_code = str(request.args.get("c"))
-            print (active_game.uuid, active_game.attempts, active_game.attempt)
+            print (active_game.uuid, active_game.single_attempt)
 
             return "hra nalezena"
 
