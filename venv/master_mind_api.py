@@ -18,7 +18,7 @@ def dummy_api():
             self.secret_code = [0 , 0, 0, 0, 0]
             self.current_att=0
             self.attempts=[]
-            self.attempt={{"no": 0, "inserted_code": "00000000", "black_s"=0, "white_s"=0}}
+            self.attempt={"no": 0, "inserted_code": "00000000", "black_s":0, "white_s":0}
             self.game_over = False
             self.code_hacked = False
             self.all_colors_quessed = False
@@ -53,10 +53,11 @@ def dummy_api():
         my_game.insert_uuid(game_uuid)
         my_game.random_code_generator()
         secret_code=my_game.print_random_code()
-        print(secret_code, type(secret_code))
+        #print(secret_code, type(secret_code))
         return secret_code
     else:
-        return "ahoj michale."
+        att = att(request.args.get("att"))
+        #return "ahoj michale."
 
 
 
