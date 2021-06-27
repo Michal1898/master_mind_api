@@ -17,10 +17,10 @@ def dummy_api():
             self.DIGIT_NO = 5
             self.ATTEMPTS_NO = 10
             self.uuid = "00000000"
-            self.secret_code = ["0", "0" ,"0","0","0"]
+            self.secret_code = ["1", "2" ,"3","4","5"]
             self.current_att=0
             self.attempts=[]
-            self.single_attempt={"att_no":0, "quessed_code":["0", "0" ,"0","0","0"], "black_s":0, "white_s":0}
+            self.single_attempt={"att_no":0, "quessed_code":["1", "2" ,"3","4","5"], "black_s":0, "white_s":0}
             self.game_over = False
             self.code_hacked = False
             self.all_colors_quessed = False
@@ -94,7 +94,8 @@ def dummy_api():
         game_uuid = str(game_uuid)
         game_uuid = game_uuid[:8]
         my_game=GameZone()
-        my_game.evaluate_attempt(3,"31245")
+        # only for tests
+        my_game.evaluate_attempt(0,"53421")
         my_game.insert_uuid(game_uuid)
         my_game.random_code_generator()
         secret_code=my_game.print_random_code()
