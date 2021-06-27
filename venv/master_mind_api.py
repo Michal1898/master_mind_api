@@ -48,7 +48,7 @@ class GameZone:
     def evaluate_attempt(self, att_no, inserted_code):
         self.single_attempt.update({"att_no": att_no})
         inserted_code = list(inserted_code)
-        self.single_attempt.update({"guessed_code": inserted_code})
+        self.single_attempt["guessed_code"] = copy(inserted_code)
 
         secret_code = copy(self.secret_code)
         print(f"Tajny kod:{secret_code},Vlozeny kod :{inserted_code}")
