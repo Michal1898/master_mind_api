@@ -42,10 +42,9 @@ def dummy_api():
         def insert_uuid(self, game_uuid):
             self.uuid = game_uuid
 
-    code = str(request.args.get("code"))
-    #code="new_game"
-    code= code.lower()
-    if code=="new_game":
+    game_code = str(request.args.get("uuid"))
+    game_code= game_code.lower()
+    if game_code=="new_game":
         game_uuid = uuid.uuid4()
         game_uuid = str(game_uuid)
         game_uuid = game_uuid[:8]
@@ -60,11 +59,15 @@ def dummy_api():
         print(game_active)
         game_activated = False
         for game in game_active :
-            print(game.uuid ,code)
-            if game.uuid == code:
+            print(game.uuid , game_code)
+            if game.uuid == game_code:
+                active_game = game
                 game_activated = True
         if game_activated:
-            att = request.args.get("att")
+            att = int(request.args.get("att"))
+            inserted_code = str(request.args.get("c"))
+            print (active_game.uuid, active_game.attempts, active_game.attempt)
+
             return "hra nalezena"
 
         else:
